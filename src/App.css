@@ -3,13 +3,22 @@ body{
 }
 
 .Canvas{
-  height: 90vh;
+  height: 80vh;
   width: 100vw;
-  background-color: aqua;
-  border: 1 px solid red;
+  background-color: white;
   position: relative;
 }
 
+.Footer{
+  border: 1px solid black;
+  overflow: scroll;
+  height: 20vh;
+}
+
+.emoji{
+  font-size: 48px;
+  cursor: pointer;
+}
 .emoji--active{
   position: absolute;
   top: 0;
