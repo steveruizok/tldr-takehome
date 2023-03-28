@@ -1,11 +1,16 @@
-
 import './App.css'
+import { emojis } from './assets/emojis'
 
 function App() {
 
   return (
-    <div>
-    </div>
+    <>
+    <main className="Canvas"></main>
+    <footer className="Footer">
+    {emojis.map(emoji => (
+    <span className="emoji" title={`&#${emoji};`}>{String.fromCodePoint(emoji)}</span>))}
+    </footer>
+    </>
   )
 }
 

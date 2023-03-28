@@ -1,0 +1,17 @@
+body{
+  margin: 0
+}
+
+.Canvas{
+  height: 90vh;
+  width: 100vw;
+  background-color: aqua;
+  border: 1 px solid red;
+  position: relative;
+}
+
+.emoji--active{
+  position: absolute;
+  top: 0;
+  left: 0;
+}

@@ -1,0 +1,10 @@
+body{
+  margin: 0
+}
+
+.Canvas{
+  height: 90vh;
+  width: 100vw;
+  background-color: aqua;
+  border: 1 px solid red;
+}
