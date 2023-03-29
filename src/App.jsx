@@ -22,6 +22,8 @@ function App() {
     const cleanup = () => {
       emoji.removeEventListener('mousedown', onMouseDown);
     }
+
+    return cleanup;
   }, [])
 
   return (
