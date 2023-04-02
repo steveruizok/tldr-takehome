@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
-import { emojis } from './assets/emojis'
+
+
 
 function App() {
 
@@ -9,8 +10,14 @@ function App() {
 
   const [selected, setSelected] = useState(false);
 
+
+  const emojis = ['🌟', '🔥', '💝', '👍', '👎']
+
+  const handleCursorMove = (event) => {
+    const { clientX, clientY } = event;
+  }
+
   useEffect(() => {
-    console.log('useffect')
 
     const emoji = emojiRef.current;
     const canvas = canvasRef.current;
@@ -39,15 +46,18 @@ function App() {
 
   return (
     <>
-    <main ref={canvasRef} className="Canvas">
+    <main ref={canvasRef} className="Canvas" onMouseMove={handleCursorMove}>
+    
+    </main>
     <footer className="Footer">
     <span ref={emojiRef} className="emoji">&#128513;</span>
 
-    {/* {emojis.map(emoji => (
-    <span ref="emojiRef" className="emoji" title={`&#${emoji};`}>{String.fromCodePoint(emoji)}</span>))} */}
+    {emojis.map((emoji) => (
+      <button className='emoji-btn'>
+        {emoji}
+      </button>
+    ))}
     </footer>
-    </main>
-    
     </>
   )
 }
