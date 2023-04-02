@@ -16,10 +16,8 @@ function App() {
     const canvas = canvasRef.current;
 
     const onMouseDown = (e) => {
-      isClicked.current = true;
-    }
-    const onMouseUp = (e) => {
-      isClicked.current = false;
+      if (!isClicked.current) return isClicked.current = true
+      else {isClicked.current = false}
     }
     const onMouseMove = (e) => {
       if (!isClicked.current) return;
@@ -29,12 +27,10 @@ function App() {
     }
 
     emoji.addEventListener('mousedown', onMouseDown)
-    emoji.addEventListener('mouseup', onMouseUp)
     canvas.addEventListener('mousemove', onMouseMove)
 
     const cleanup = () => {
       emoji.removeEventListener('mousedown', onMouseDown);
-      emoji.removeEventListener('mouseup', onMouseUp)
       canvas.removeEventListener('mousemove', onMouseMove)
     }
 
