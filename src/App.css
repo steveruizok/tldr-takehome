@@ -3,17 +3,19 @@ body{
 }
 
 .Canvas{
-  height: 80vh;
+  height: 100vh;
   width: 100vw;
   background-color: white;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .Footer{
   border: 1px solid black;
   overflow: scroll;
   height: 20vh;
-  position: relative;
 }
 
 .emoji{
@@ -22,6 +24,7 @@ body{
 }
 .emoji--active{
   position: absolute;
+  z-index: 1000;
   top: 0;
   left: 0;
 }
