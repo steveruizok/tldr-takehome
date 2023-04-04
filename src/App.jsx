@@ -32,6 +32,7 @@ function App() {
       };
       setStickers([...stickers, newSticker]);
     }
+    setRotation(randomRotation());
   };
 
   const randomRotation = () => {
