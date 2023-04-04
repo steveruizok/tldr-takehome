@@ -1,9 +1,69 @@
 body{
   margin: 0
 }
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.canvas {
+  flex-grow: 1;
+  position: relative;
+  cursor: pointer;
+}
+
+.sticker {
+  position: absolute;
+  user-select: none;
+  font-size: 38px;
+}
+
+.cursor-emoji {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  font-size: 38px;
+  z-index: 1000;
+}
+
+.emoji-picker {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  background-color: #f2f2f2;
+}
+
+.emoji-btn {
+  font-size: 24px;
+  padding: 5px 10px;
+  margin: 5px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  background-color: transparent;
+  transition: background-color 0.2s, border-color 0.2s;
+  -webkit-transition: background-color 0.2s, border-color 0.2s;
+  -moz-transition: background-color 0.2s, border-color 0.2s;
+  -ms-transition: background-color 0.2s, border-color 0.2s;
+  -o-transition: background-color 0.2s, border-color 0.2s;
+}
+
+.emoji-btn:hover {
+  background-color: #ddd;
+}
+
+.emoji-btn.selected {
+  border: 1px inset rgba(255, 255, 255, 0.709);
+  transform: scale(120%);
+  -webkit-transform: scale(120%);
+  -moz-transform: scale(120%);
+  -ms-transform: scale(120%);
+  -o-transform: scale(120%);
+}
+
 
 .Canvas{
-  height: 100vh;
+  height: 80vh;
   width: 100vw;
   background-color: white;
   position: relative;

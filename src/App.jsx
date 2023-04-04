@@ -1,54 +1,89 @@
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
-import { emojis } from './assets/emojis'
+//import { emojis } from './assets/emojis'
+
+const emojis = ['🌟', '🔥', '💖', '👍', '👎'];
+
 
 function App() {
+
+  const [selectedEmoji, setSelectedEmoji] = useState(null);
+  const [stickers, setStickers] = useState([]);
+  const [cursorPosition, setCursorPosition] = useState({x: 0, y: 0})
 
   const emojiRef = useRef(null);
   const canvasRef = useRef(null);
 
-  const [selected, setSelected] = useState(false);
+  const offset = 18;
 
-  useEffect(() => {
-    console.log('useffect')
+  const handleEmojiClick = (emoji) => {
+    setSelectedEmoji(emoji);
+  };
 
-    const emoji = emojiRef.current;
-    const canvas = canvasRef.current;
-
-    const onMouseDown = (e) => {
-      if(!selected) return setSelected(true);
-      else {setSelected(false)};
+  const handleCanvasClick = (event) => {
+    if (selectedEmoji) {
+      const { clientX, clientY } = event;
+      const newSticker = {
+        emoji: selectedEmoji,
+        x: clientX,
+        y: clientY,
+      };
+      setStickers([...stickers, newSticker]);
     }
-    const onMouseMove = (e) => {
-      if (!selected) return;
-      emoji.style.position = 'absolute';
-      emoji.style.top = `${e.clientY}px`;
-      emoji.style.left = `${e.clientX}px`;
+  };
+
+  const handleMouseMove = (event) => {
+    const { clientX, clientY } = event;
+    setCursorPosition({ x: clientX - offset, y: clientY - offset });
+  };
+
+  const handleTrashClick = (event) => {
+    setSelectedEmoji(null);
+  }
+  const handleDelete = (index) => {
+    if (selectedEmoji === null){
+      setStickers(stickers.filter((_, stickerIndex) => stickerIndex !== index));
     }
-
-    emoji.addEventListener('mousedown', onMouseDown)
-    canvas.addEventListener('mousemove', onMouseMove)
-
-    const cleanup = () => {
-      emoji.removeEventListener('mousedown', onMouseDown);
-      canvas.removeEventListener('mousemove', onMouseMove)
-    }
-
-    return cleanup;
-  }, [selected])
+  }
 
   return (
-    <>
-    <main ref={canvasRef} className="Canvas">
-    <footer className="Footer">
-    <span ref={emojiRef} className="emoji">&#128513;</span>
-
-    {/* {emojis.map(emoji => (
-    <span ref="emojiRef" className="emoji" title={`&#${emoji};`}>{String.fromCodePoint(emoji)}</span>))} */}
-    </footer>
-    </main>
-    
-    </>
+    <div className="App">
+    <div ref={canvasRef} className="canvas" onClick={handleCanvasClick} onMouseMove={handleMouseMove}>
+    {selectedEmoji && (
+          <span
+            className="cursor-emoji"
+            style={{ left: cursorPosition.x, top: cursorPosition.y }}
+          >
+            {selectedEmoji}
+          </span>
+        )}
+      {stickers.map((sticker, index) => (
+        <span
+          ref={emojiRef}
+          key={index}
+          onClick={() => handleDelete(index)}
+          className="sticker"
+          style={{ left: sticker.x - offset, top: sticker.y - offset}}
+        >
+          {sticker.emoji}
+        </span>
+      ))}
+    </div>
+    <div className="emoji-picker">
+      {emojis.map((emoji, index) => (
+        <button
+          key={index}
+          className={`emoji-btn${selectedEmoji === emoji ? ' selected' : ''}`}
+          onClick={() => handleEmojiClick(emoji)}
+        >
+          {emoji}
+        </button>
+      ))}
+      <button onClick={handleTrashClick}>
+        🗑
+      </button>
+    </div>
+  </div>
   )
 }
 
