@@ -17,6 +17,7 @@ body{
   position: absolute;
   user-select: none;
   font-size: 38px;
+ 
 }
 
 .cursor-emoji {
@@ -89,6 +90,7 @@ body{
 .emoji{
   font-size: 48px;
   cursor: pointer;
+  rotate: 0;
 }
 .emoji--active{
   position: absolute;

@@ -7,10 +7,10 @@ function App() {
 
   const [selectedEmoji, setSelectedEmoji] = useState(null);
   const [stickers, setStickers] = useState([]);
-  const [cursorPosition, setCursorPosition] = useState({x: 0, y: 0})
+  const [cursorPosition, setCursorPosition] = useState({x: 0, y: 0});
+  const [rotation, setRotation] = useState(0);
 
-  const emojiRef = useRef(null);
-  const canvasRef = useRef(null);
+
 
   const offset = 18;
   const emojis = ['🌟', '🔥', '💝', '👍', '👎']
@@ -18,6 +18,7 @@ function App() {
 
   const handleEmojiClick = (emoji) => {
     setSelectedEmoji(emoji);
+    setRotation(randomRotation());
   };
 
   const handleCanvasClick = (event) => {
@@ -27,17 +28,24 @@ function App() {
         emoji: selectedEmoji,
         x: clientX,
         y: clientY,
+        rotation: rotation,
       };
       setStickers([...stickers, newSticker]);
     }
   };
 
-  const handleMouseMove = (event) => {
-    const { clientX, clientY } = event;
-    setCursorPosition({ x: clientX - offset, y: clientY - offset });
+  const randomRotation = () => {
+    const min = -15;
+    const max = 15;
+    return Math.floor(Math.random() * (max - min + 1) + min);
   };
 
-  const handleTrashClick = (event) => {
+  const handleMouseMove = (event) => {
+    const { clientX, clientY } = event;
+    setCursorPosition({ x: clientX - offset, y: clientY - offset});
+  };
+
+  const handleTrashClick = () => {
     setSelectedEmoji(trash);
   }
   const handleDelete = (index) => {
@@ -46,31 +54,39 @@ function App() {
     }
   }
 
+  const handleSpaceBar = (e) => {
+    if (e.key === 'Spacebar'){
+      setRotation(randomRotation());
+    }
+  }
+
   return (
-    <div className="App">
-    <div ref={canvasRef} className="canvas" onClick={handleCanvasClick} onMouseMove={handleMouseMove}>
+    <div className="App" onKeyDown={handleSpaceBar}>
+    <div
+    className="canvas" 
+    onClick={handleCanvasClick} 
+    onMouseMove={handleMouseMove}>
     {selectedEmoji !== trash && (
           <span
             className="cursor-emoji"
-            style={{ left: cursorPosition.x, top: cursorPosition.y }}
+            style={{ left: cursorPosition.x, top: cursorPosition.y, transform: `rotate(${rotation}deg)`}}
           >
             {selectedEmoji}
           </span>
         )}
       {stickers.map((sticker, index) => (
         <span
-          ref={emojiRef}
           key={index}
           onClick={() => handleDelete(index)}
           className="sticker"
-          style={{ left: sticker.x - offset, top: sticker.y - offset}}
+          style={{ left: sticker.x - offset, top: sticker.y - offset, transform: `rotate(${sticker.rotation}deg)`}}
         >
           {sticker.emoji}
         </span>
       ))}
     </div>
     <div className="emoji-picker">
-      <div className="emojis">
+      <div>
         {emojis.map((emoji, index) => (
         <button
           key={index}
@@ -81,8 +97,7 @@ function App() {
         </button>
       ))}
       </div>
-      
-      <div className="right-aligned">
+      <div>
       <button className={`emoji-btn${selectedEmoji === trash ? ' selected' : ''}`} onClick={() => handleTrashClick(trash)}>
         {trash}
       </button> 
