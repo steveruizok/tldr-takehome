@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
-//import { emojis } from './assets/emojis'
 
-const emojis = ['🌟', '🔥', '💖', '👍', '👎'];
 
 
 function App() {
