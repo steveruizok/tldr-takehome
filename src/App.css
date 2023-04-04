@@ -29,6 +29,7 @@ body{
 
 .emoji-picker {
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
   padding: 10px;
   background-color: #f2f2f2;

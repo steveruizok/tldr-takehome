@@ -13,13 +13,15 @@ function App() {
   const canvasRef = useRef(null);
 
   const offset = 18;
+  const emojis = ['🌟', '🔥', '💝', '👍', '👎']
+  const trash = '🗑';
 
   const handleEmojiClick = (emoji) => {
     setSelectedEmoji(emoji);
   };
 
   const handleCanvasClick = (event) => {
-    if (selectedEmoji) {
+    if (selectedEmoji !== trash) {
       const { clientX, clientY } = event;
       const newSticker = {
         emoji: selectedEmoji,
@@ -36,10 +38,10 @@ function App() {
   };
 
   const handleTrashClick = (event) => {
-    setSelectedEmoji(null);
+    setSelectedEmoji(trash);
   }
   const handleDelete = (index) => {
-    if (selectedEmoji === null){
+    if (selectedEmoji === trash){
       setStickers(stickers.filter((_, stickerIndex) => stickerIndex !== index));
     }
   }
@@ -47,7 +49,7 @@ function App() {
   return (
     <div className="App">
     <div ref={canvasRef} className="canvas" onClick={handleCanvasClick} onMouseMove={handleMouseMove}>
-    {selectedEmoji && (
+    {selectedEmoji !== trash && (
           <span
             className="cursor-emoji"
             style={{ left: cursorPosition.x, top: cursorPosition.y }}
@@ -68,7 +70,8 @@ function App() {
       ))}
     </div>
     <div className="emoji-picker">
-      {emojis.map((emoji, index) => (
+      <div className="emojis">
+        {emojis.map((emoji, index) => (
         <button
           key={index}
           className={`emoji-btn${selectedEmoji === emoji ? ' selected' : ''}`}
@@ -77,9 +80,14 @@ function App() {
           {emoji}
         </button>
       ))}
-      <button onClick={handleTrashClick}>
-        🗑
-      </button>
+      </div>
+      
+      <div className="right-aligned">
+      <button className={`emoji-btn${selectedEmoji === trash ? ' selected' : ''}`} onClick={() => handleTrashClick(trash)}>
+        {trash}
+      </button> 
+      </div>
+      
     </div>
   </div>
   )
