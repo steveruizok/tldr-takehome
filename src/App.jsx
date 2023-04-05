@@ -7,7 +7,6 @@ function App() {
   const [selectedEmoji, setSelectedEmoji] = useState(null);
   const [rotation, setRotation] = useState(0);
 
-  const offset = 18;
   const trash = "🗑";
 
   const handleEmojiClick = (emoji) => {

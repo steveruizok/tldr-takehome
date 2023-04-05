@@ -12,6 +12,8 @@ export function Canvas({
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [stickers, setStickers] = useState([]);
 
+  const offset = 18;
+
   const handleMouseMove = (event) => {
     const { clientX, clientY } = event;
     setCursorPosition({ x: clientX - offset, y: clientY - offset });
