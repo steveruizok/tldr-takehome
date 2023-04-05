@@ -1,25 +1,23 @@
-# tldraw take-home
+# tldraw take-home challenge
 
-1. Create a new repository based on this template (**Use this template** > **Create a new repository**)
-2. Clone the repository and open in your editor
-3. Install dependencies with npm (`npm install`)
-4. Start the local development server (`npm run dev`)
-5. Follow the instructions below.
+This is a take home challenge for an apprenticeship with tldraw, a tiny little drawing app.
 
-# Instructions
+The brief was to implement a sticker feature as below using React, although this was later changed to Vanilla JS. However, I was already deep into the React version and was enjoying the challenge of it, so I chose to see it through in React.
 
-tldraw is working on a new feature for our white-boarding app: **stickers!**
+![reference](https://github.com/tldraw/tldraw-takehome/raw/main/reference.gif) 
 
-You've been assigned the ticket:
+## Assumptions
 
-![reference](https://github.com/tldraw/tldraw-takehome/raw/main/reference.gif)
+- Since I'm not working with a team, it isn't necessary to make branches for features I'm working on.
+- However my commits should be small, discrete and frequent in order to tell a legible story of the development of the project to my potential employers. (Hello!)
+- I'll need to follow the reference very closely and try to implement all the features I see.
 
-> Stickers are little shapes that you can stamp down on a drawing to give a quick thumbs up, share some love, vote on a topic, or bring some attention to part of the page. After choosing a sticker, a user can click on the page to place the sticker down.
+## Stretch user stories
 
----
+As a user I want to be able to resize emojis I've placed
 
-1. In this repository's project, implement the basics of the feature as shown and described above. Use **regular HTML and CSS**. Don't use HTML canvas and don't use any third party libraries like Paper.js. Use emojis for the stickers (🌟, 🔥, 💖, 👍, 👎).
-2. Next, think beyond the basic specification written in the ticket. What else does the demo show? What else might this stickers feature need before it was ready for people to use? Come up with a few ideas. Create issues in your from these issues ofin the form of user stories, for example “as a user I want to delete a sticker”.
-3. As a **stretch goal**, pick one of the stories you created in step two and implement it in your app.
+As a user I want to be able to select skin tones that match my own
 
-Good luck!
+As a user I want to be able to select from a broader range of emojis
+
+As a user I want to be able to delete stickers I've placed. This is the one I chose.
