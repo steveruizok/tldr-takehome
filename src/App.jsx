@@ -64,7 +64,7 @@ function App() {
   return (
     <div className="App" onKeyDown={handleSpaceBar}>
     <div
-    className="canvas" 
+    className={`canvas ${selectedEmoji === trash ? ' deleteMode' : ''}`} 
     onClick={handleCanvasClick} 
     onMouseMove={handleMouseMove}>
     {selectedEmoji !== trash && (

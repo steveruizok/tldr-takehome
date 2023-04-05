@@ -13,6 +13,10 @@ body{
   cursor: pointer;
 }
 
+.deleteMode {
+  cursor: crosshair;
+}
+
 .sticker {
   position: absolute;
   user-select: none;
@@ -63,16 +67,6 @@ body{
   -o-transform: scale(120%);
 }
 
-
-.Canvas{
-  height: 80vh;
-  width: 100vw;
-  background-color: white;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
 
 .Footer{
   border: 1px solid black;
