@@ -1,6 +1,7 @@
-body{
-  margin: 0
+body {
+  margin: 0;
 }
+
 .App {
   display: flex;
   flex-direction: column;
@@ -13,7 +14,7 @@ body{
   cursor: pointer;
 }
 
-.deleteMode {
+.delete-mode {
   cursor: crosshair;
 }
 
@@ -21,7 +22,6 @@ body{
   position: absolute;
   user-select: none;
   font-size: 38px;
- 
 }
 
 .cursor-emoji {
@@ -67,26 +67,13 @@ body{
   -o-transform: scale(120%);
 }
 
-
-.Footer{
-  border: 1px solid black;
-  overflow: scroll;
-  height: 20vh;
-}
-
-.emoji-btn{
-  font-size: 24px;
-  border: none;
-  padding: 10px;
-  margin: 5px;
-  cursor: pointer;
-}
-.emoji{
+.emoji {
   font-size: 48px;
   cursor: pointer;
   rotate: 0;
 }
-.emoji--active{
+
+.emoji--active {
   position: absolute;
   z-index: 1000;
   top: 0;
