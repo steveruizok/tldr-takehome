@@ -1,25 +1,38 @@
-# tldraw take-home
+# tldraw take-home challenge
 
-1. Create a new repository based on this template (**Use this template** > **Create a new repository**)
-2. Clone the repository and open in your editor
-3. Install dependencies with npm (`npm install`)
-4. Start the local development server (`npm run dev`)
-5. Follow the instructions below.
+This is a take home challenge for an apprenticeship with tldraw, a tiny little drawing app.
 
-# Instructions
+The brief was to implement a sticker feature as below.
 
-tldraw is working on a new feature for our white-boarding app: **stickers!**
+![reference](https://github.com/tldraw/tldraw-takehome/raw/main/reference.gif) 
 
-You've been assigned the ticket:
+## Technologies used
 
-![reference](https://github.com/tldraw/tldraw-takehome/raw/main/reference.gif)
+I chose to complete this challenge in React because I was already deep into my React version and was enjoying the challenge of it, so I chose to see it through in React.
 
-> Stickers are little shapes that you can stamp down on a drawing to give a quick thumbs up, share some love, vote on a topic, or bring some attention to part of the page. After choosing a sticker, a user can click on the page to place the sticker down.
+## Assumptions
 
----
+- Since I'm not working with a team, it isn't necessary to make branches for features I'm working on.
+- However my commits should be small, discrete and frequent in order to tell a legible story of the development of the project to my potential employers. (Hello!)
+- I'll need to follow the reference very closely and try to implement all the features I see.
 
-1. In this repository's project, implement the basics of the feature as shown and described above. Use **regular HTML and CSS**. Don't use HTML canvas and don't use any third party libraries like Paper.js. Use emojis for the stickers (🌟, 🔥, 💖, 👍, 👎).
-2. Next, think beyond the basic specification written in the ticket. What else does the demo show? What else might this stickers feature need before it was ready for people to use? Come up with a few ideas. Create issues in your from these issues ofin the form of user stories, for example “as a user I want to delete a sticker”.
-3. As a **stretch goal**, pick one of the stories you created in step two and implement it in your app.
+## Process
 
-Good luck!
+I initially began by following [this video](https://youtu.be/ZcDWyVj6-uU) to implement a simple drag and drop feature in React. I thought I would build from there and adapt it to work with clicks instead of dragging, and to clone elements rather than move them. it felt like the right solution because it used hooks I wasn't familiar with (useRef and useEffect), instead of state. However, I learned as I went on that this was a horrible foundation, just because it's difficult doesn't mean it's right! I definitely should have been using state from the beggining, and I eventually had to undo almost all the work I did.
+
+This led to some poor discipline around version control and some giant commits. I don't think my commit history tells a legible story of the development of this feature.
+
+## Stretch user stories
+
+1. As a user I want to be able to resize emojis I've placed
+2. As a user I want to be able to select skin tones that match my own
+3. As a user I want to be able to select from a broader range of emojis
+4. As a user I want to be able to delete stickers I've placed. **(This is the one I chose.)**
+
+I chose the delete story because it was the first thing extra thing I wanted to do while using the app. I was making a big heart out of hearts and one of the lines was wonky.
+
+## What I would tackle next
+
+- I would extract the logic for the canvas and emoji selector into different components.
+- I would visibly change the cursor when in delete mode and add a keyboard shortcut for it.
+- The next feature I would implement would be selecting a broader range of emojis.
