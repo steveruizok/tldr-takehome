@@ -35,6 +35,6 @@ I chose the delete story because it was the first thing extra thing I wanted to 
 
 ## What I would tackle next
 
-- I would extract the logic for the canvas and emoji selector into different components.
-- I would visibly change the cursor when in delete mode and add a keyboard shortcut for it.
-- The next feature I would implement would be selecting a broader range of emojis.
+- [x] I would extract the logic for the canvas and emoji selector into different components.
+- [x] I would visibly change the cursor when in delete mode and add a keyboard shortcut for it.
+- [ ] The next feature I would implement would be selecting a broader range of emojis.
