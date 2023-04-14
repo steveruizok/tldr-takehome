@@ -17,7 +17,7 @@ export function EmojiPicker({
         {emojis.map((emoji, index) => (
           <button
             key={index}
-            className={`emoji-btn${selectedEmoji === emoji ? " selected" : ""}`}
+            className={`emoji-btn ${selectedEmoji === emoji && " selected"}`}
             onClick={() => handleEmojiClick(emoji)}
           >
             {emoji}
@@ -26,7 +26,7 @@ export function EmojiPicker({
       </div>
       <div>
         <button
-          className={`emoji-btn${selectedEmoji === trash ? " selected" : ""}`}
+          className={`emoji-btn ${selectedEmoji === trash && " selected"}`}
           onClick={() => handleTrashClick(trash)}
         >
           {trash}

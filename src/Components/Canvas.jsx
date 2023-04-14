@@ -10,6 +10,7 @@ export function Canvas({
 }) {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [stickers, setStickers] = useState([]);
+  const [isMouseOverCanvas, setIsMouseOverCanvas] = useState(false);
 
   const offset = 18;
 
@@ -40,11 +41,13 @@ export function Canvas({
 
   return (
     <div
-      className={`canvas ${selectedEmoji === trash ? " delete-mode" : ""}`}
+      className={`canvas ${selectedEmoji === trash && " delete-mode"}`}
       onClick={handleCanvasClick}
       onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsMouseOverCanvas(true)}
+      onMouseLeave={() => setIsMouseOverCanvas(false)}
     >
-      {selectedEmoji !== trash && (
+      {selectedEmoji !== trash && isMouseOverCanvas && (
         <span
           className="cursor-emoji"
           style={{
