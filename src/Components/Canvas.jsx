@@ -6,7 +6,6 @@ export function Canvas({
   trash,
   rotation,
   setRotation,
-  offset,
   randomRotation,
 }) {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });

@@ -3,11 +3,15 @@ import { Canvas } from "./Components/Canvas";
 import { useState } from "react";
 import "./App.css";
 
+const randomRotation = () => {
+  const min = -15;
+  const max = 15;
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
 function App() {
   const [selectedEmoji, setSelectedEmoji] = useState(null);
   const [rotation, setRotation] = useState(0);
-
-  const trash = "🗑";
 
   const handleEmojiClick = (emoji) => {
     setSelectedEmoji(emoji);
@@ -20,11 +24,7 @@ function App() {
     }
   };
 
-  const randomRotation = () => {
-    const min = -15;
-    const max = 15;
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  };
+  const trash = "🗑";
 
   return (
     <div className="App" onKeyDown={handleSpaceBar}>
@@ -34,7 +34,6 @@ function App() {
         rotation={rotation}
         setRotation={setRotation}
         randomRotation={randomRotation}
-        offset={offset}
       />
 
       <EmojiPicker
